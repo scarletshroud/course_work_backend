@@ -24,6 +24,9 @@ public class UserService {
         return userRepo.findUserById(id);
     }
 
+    public void updateUser(Long id, String username, Long sportId) {
+        userRepo.updateUser(id, username, sportId);
+    }
     public void saveUser(User user) {
         userRepo.save(user);
     }
