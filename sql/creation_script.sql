@@ -45,7 +45,7 @@ CREATE TABLE SPORT (
 CREATE TABLE USERS (
     id              BIGSERIAL PRIMARY KEY,
     email           VARCHAR(32) NOT NULL UNIQUE,
-    username        VARCHAR(32) NOT NULL UNIQUE,
+    username        VARCHAR(32) UNIQUE,
     password        VARCHAR(256) NOT NULL,
     home_spot_id    BIGINT REFERENCES SPOT (id),
     role_id         BIGINT REFERENCES ROLE (id),
