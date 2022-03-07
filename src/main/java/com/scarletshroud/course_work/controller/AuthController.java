@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Optional;
 
 @RestController
@@ -29,14 +30,21 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody UserLoginCredentials userLoginCredentials) {
         Optional<User> user  = userService.findUserByEmail(userLoginCredentials.getEmail());
+        HashMap<String, Object> response = new HashMap<>();
         if (user.isPresent()) {
             if (HashEncoder.sha256(userLoginCredentials.getPassword()).equals(user.get().getPassword())) {
-                final String token = HashEncoder.sha256(user.get().getUsername());
+                final String token = HashEncoder.sha256(user.get().getEmail());
                 SessionService.sessionService.add(token, user.get().getId());
                 UserTokenDTO userToken = new UserTokenDTO(token);
-                return new ResponseEntity<>(userToken, HttpStatus.OK);
+                response.put("userToken", userToken.getToken());
+                response.put("userId", user.get().getId());
+                response.put("userSportId", user.get().getSportId());
+                response.put("userProfileIsFilled", user.get().getUsername() != null);
+                response.put("loginSuccess", true);
+                return new ResponseEntity<>(response, HttpStatus.OK);
             }
         }
+        response.put("loginSuccess", false);
         final String responseMessage = "User doesn't exist";
         return new ResponseEntity<>(responseMessage, HttpStatus.UNAUTHORIZED);
     }

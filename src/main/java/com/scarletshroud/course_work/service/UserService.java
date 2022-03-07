@@ -25,7 +25,7 @@ public class UserService {
     }
 
     public void updateUser(Long id, String username, Long sportId) {
-        userRepo.updateUser(id, username, sportId);
+        userRepo.updateUser(username, sportId, id);
     }
     public void saveUser(User user) {
         userRepo.save(user);

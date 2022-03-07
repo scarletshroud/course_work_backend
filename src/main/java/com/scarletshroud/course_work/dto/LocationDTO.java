@@ -9,6 +9,11 @@ public class LocationDTO {
 
     }
 
+    public LocationDTO(float latitude, float longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
     public float getLatitude() {
         return latitude;
     }

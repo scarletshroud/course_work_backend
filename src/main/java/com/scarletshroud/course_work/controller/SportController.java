@@ -23,8 +23,8 @@ public class SportController {
         this.sportService = sportService;
     }
 
-    @GetMapping("/sport")
-    public ResponseEntity<Object> getUserTricks(@RequestBody UserTokenDTO token) {
+    @GetMapping("/sports")
+    public ResponseEntity<Object> getSports() {
         Optional<List<Sport>> allSport = sportService.getAll();
         return allSport.<ResponseEntity<Object>>map(sports -> new ResponseEntity<>(sports, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }

@@ -20,7 +20,7 @@ public class Video {
     private Long authorId;
 
     @Column(name="creation_date")
-    private Date creation_date;
+    private Date creationDate;
 
     public Video() {
 
@@ -59,10 +59,10 @@ public class Video {
     }
 
     public Date getCreation_date() {
-        return creation_date;
+        return creationDate;
     }
 
     public void setCreation_date(Date creation_date) {
-        this.creation_date = creation_date;
+        this.creationDate = creation_date;
     }
 }

@@ -19,6 +19,9 @@ public class User {
     @Column(name="password")
     private String password;
 
+    @Column(name="status")
+    private String status;
+
     @Column(name="home_spot_id")
     private Long homeSpotId;
 
@@ -39,6 +42,7 @@ public class User {
         this.email = email;
         this.username = username;
         this.password = password;
+        this.roleId = 1L;
         this.creationDate = new Date();
     }
 
@@ -104,6 +108,14 @@ public class User {
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
 

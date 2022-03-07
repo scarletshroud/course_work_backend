@@ -15,4 +15,6 @@ public interface SpotRepository extends JpaRepository<Spot, Long> {
                     "WHERE LOCATION.LATITUDE - ?1 < 0.1 AND LOCATION.LONGITUDE - ?2 < 0.1",
             nativeQuery = true)
     Optional<List<Spot>> getSpotsByLocation(float latitude, float longitude);
+
+    Optional<Spot> findById(Long id);
 }

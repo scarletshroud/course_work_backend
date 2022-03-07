@@ -47,6 +47,7 @@ CREATE TABLE USERS (
     email           VARCHAR(32) NOT NULL UNIQUE,
     username        VARCHAR(32) UNIQUE,
     password        VARCHAR(256) NOT NULL,
+    status          VARCHAR(512),
     home_spot_id    BIGINT REFERENCES SPOT (id),
     role_id         BIGINT REFERENCES ROLE (id),
     sport_id        BIGINT REFERENCES SPORT (id),
@@ -128,7 +129,7 @@ CREATE TABLE SPOT_COMMENTS (
 
 CREATE TABLE SPOT_VIDEOS (
     spot_id     BIGINT REFERENCES SPOT (id),
-    comment_id  BIGINT REFERENCES COMMENT(id)
+    video_id  BIGINT REFERENCES VIDEO(id)
 );
 
 CREATE TABLE SPOT_OBJECTS (

@@ -17,15 +17,23 @@ public class TrickService {
         this.trickRepo = trickRepo;
     }
 
-    public Optional<List<Trick>> getAllTricksBySport(String sport) {
-        return trickRepo.getAllTricksBySport(sport);
+    public Optional<List<Trick>> getAllTricksBySportId(Long sportId) {
+        return trickRepo.getAllTricksBySportId(sportId);
     }
 
     public Optional<List<Trick>> getUserProgressTricks(Long id) {
         return trickRepo.getUserProgressTricks(id);
     }
 
-    public void updateUserTrickStatus(Long userId, Long trickId, String trickStatus) {
-        trickRepo.updateUserTrickStatus(userId, trickId, trickStatus);
+    public void incrementTrickLearnedPeople(Long id) {
+        trickRepo.incrementTrickLearnedPeople(id);
+    }
+
+    public void decrementTrickLearnedPeople(Long id) {
+        trickRepo.decrementTrickLearnedPeople(id);
+    }
+
+    public Optional<Trick> findTrickById(Long id) {
+        return trickRepo.findTrickById(id);
     }
 }

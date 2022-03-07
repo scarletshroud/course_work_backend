@@ -2,12 +2,15 @@ package com.scarletshroud.course_work.entity;
 
 import javax.persistence.*;
 
-/*@Entity
-@Table(name="progress")*/
+@Entity
+@Table(name="progress")
+@IdClass(ProgressKey.class)
 public class Progress {
+    @Id
     @Column(name="trick_id")
     private Long trickId;
 
+    @Id
     @Column(name="user_id")
     private Long userId;
 
